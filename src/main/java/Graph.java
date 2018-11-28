@@ -22,16 +22,7 @@ public class Graph implements Iterable<Edge>{
     }
 
     private boolean isVertex(int index) {
-        if(adjacency.get(index) != null)
-            return true;
-        return false;
-        /*
-        for(LinkedList<Edge> edges: adjacency) {
-            if (edges.getFirst().source == index) {
-                return true;
-            }
-        }
-        return false;*/
+        return(adjacency.get(index) != null);
 	}
 	
 	public <T> ArrayList<LinkedList<T>> initialiseList(int size) {
@@ -53,7 +44,9 @@ public class Graph implements Iterable<Edge>{
 	
 	public void addVertex(int indexVertex) {
 	    order++;
+
 	    adjacency.add(indexVertex, new LinkedList<Edge>());
+        System.out.println("adjacency add "+ indexVertex);
         inAdjacency.add(indexVertex, new LinkedList<Arc>());
         outAdjacency.add(indexVertex, new LinkedList<Arc>());
 	}
@@ -74,21 +67,26 @@ public class Graph implements Iterable<Edge>{
 	public void addEdge(Edge e) {
 		edgeCardinality++;
 
-		if(ensureVertex(e.source))
+		if(ensureVertex(e.source)){
             adjacency.get(e.source).add(e);
-		else
-		    if(!isEdge(e))
-                adjacency.get(e.source).add(e);
-        //System.out.println("add" + e.source + " => "+ e.dest);
+            System.out.println("add11 "+ e.source +" => "+ e.dest);
+		}
+		else if(!isEdge(e)) {
+            adjacency.get(e.source).add(e);
+            System.out.println("add12 "+ e.source +" => "+ e.dest);
+        }
 
         Edge inversedEdge = new Edge(e.dest, e.source, e.weight);
 
-        if(ensureVertex(inversedEdge.source))
+        if(ensureVertex(inversedEdge.source)){
             adjacency.get(inversedEdge.source).add(inversedEdge);
-        else
-            if(!isEdge(inversedEdge))
-                adjacency.get(inversedEdge.source).add(inversedEdge);
-        //System.out.println("add" + e.dest + " => "+ e.source);
+            System.out.println("add21 "+ inversedEdge.source +" => "+ inversedEdge.dest);
+        }
+        else if(!isEdge(inversedEdge)){
+            adjacency.get(inversedEdge.source).add(inversedEdge);
+            System.out.println("add22 "+ inversedEdge.source +" => "+ inversedEdge.dest);
+        }
+
 
         addArc(new Arc(e,false));
         addArc(new Arc(e, true));
@@ -103,17 +101,17 @@ public class Graph implements Iterable<Edge>{
 
     public String toString(){
         StringBuilder result = new StringBuilder();
-        /*for(LinkedList<Edge> adjacencies : adjacency)
-            for(Edge edge: adjacencies) {
+        for(LinkedList<Edge> adjacencies : adjacency) {
+            for (Edge edge : adjacencies) {
                 result.append(edge.source).append(" => ").append(edge.dest).append("\n");
                 System.out.println(result);
-            }*/
-
-        Iterator<Edge> graphIterator = iterator();
+            }
+        }
+            /*Iterator<Edge> graphIterator = iterator();
         while(graphIterator.hasNext()){
             Edge edge = graphIterator.next();
             result.append(edge.source).append(" => ").append(edge.dest).append("\n");
-        }
+        }*/
         return result.toString();
     }
 
@@ -136,19 +134,24 @@ public class Graph implements Iterable<Edge>{
             if(currentVertex >= order)
                 return false;
 
-            if(adjacency.get(currentVertex).get(currentEdge) == adjacency.get(currentVertex).getLast()) {
-                next();
+            /*(adjacency.get(currentVertex).get(currentEdge) == adjacency.get(currentVertex).getLast()) {
                 currentVertex++;
                 currentEdge = 0;
                 return false;
             }
-            currentEdge++;
+            currentEdge++;*/
             return true;
         }
 
         @Override
         public Edge next() {
-            return adjacency.get(currentVertex).get(currentEdge);
+            System.out.println(adjacency.get(currentVertex).get(currentEdge).source + " "+ adjacency.get(currentVertex).get(currentEdge).dest);
+            if(adjacency.get(currentVertex).get(currentEdge) == adjacency.get(currentVertex).getLast()) {
+                currentVertex++;
+                currentEdge = 0;
+                return adjacency.get(currentVertex-1).getLast();
+            }
+            return adjacency.get(currentVertex).get(currentEdge++);
         }
 
         @Override
@@ -159,13 +162,52 @@ public class Graph implements Iterable<Edge>{
 
     public static void main(String argv[]){
         Graph graph = new Graph(20);
-        for(int i = 0; i < 3; i++){
-            for(int j = 0; j< 3; j++){
+        /*for(int i = 0; i < 3; i++){
+            for(int j = 3; j< 5; j++){
                 graph.addEdge(new Edge(i,j,5));
             }
-        }
+        }*/
 
-        System.out.println(graph.toString());
+        graph.addEdge(new Edge(2,3,5));
+        graph.addEdge(new Edge(2,4,6));
+        graph.addEdge(new Edge(1,3,6));
+        graph.addEdge(new Edge(1,4,6));
+        graph.addEdge(new Edge(3,5,6));
+
+
+        /*graph.addEdge(new Edge(0,3,5));
+        graph.addEdge(new Edge(0,4,6));
+        //graph.addEdge(new Edge(3,2,6));
+        graph.addEdge(new Edge(1,3,6));
+        graph.addEdge(new Edge(1,4,6));*/
+
+        for(Edge e : graph.adjacency.get(1))
+            System.out.println(e.source + " => " +e.dest);
+        System.out.println();
+
+
+
+        for(Edge e : graph.adjacency.get(3))
+            System.out.println(e.source + " => " +e.dest);
+        System.out.println();
+
+        for(Edge e : graph.adjacency.get(4))
+            System.out.println(e.source + " => " +e.dest);
+        System.out.println();
+
+        for(Edge e : graph.adjacency.get(5))
+            System.out.println(e.source + " => " +e.dest);
+
+
+
+
+        /*for(Edge edge : graph)
+            result.append(edge.source).append(" => ").append(edge.dest).append("\n");*/
+
+       //System.out.println(graph.toString());
+        /*if(graph.adjacency.get(3) == null)
+            System.out.println(graph.adjacency.get(3).getFirst().source);*/
+
     }
 
 
