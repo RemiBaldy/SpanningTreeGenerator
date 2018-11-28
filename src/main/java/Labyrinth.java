@@ -1,5 +1,3 @@
-import com.sun.javafx.geom.Edge;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GradientPaint;
@@ -189,7 +187,7 @@ public class Labyrinth extends JPanel {
 			if (grid.isHorizontal(e)) drawHorizontalEdge(g,e);
 			else drawVerticalEdge(g,e);
 		}
-		for (int i = 0; i < grid.graph.order; i++) {
+		for (int i = 0; i < grid.graph.getOrder(); i++) {
 			drawVertex(g,i);
 		}		
 		if (tree != null) drawRoot(g,tree.getRoot());
