@@ -12,7 +12,7 @@ public class Lollipop {
 		for (int i = 0; i < order; i++)
 			permutation.add(i);
 		Collections.shuffle(permutation);
-		int t = order / 3;
+		int t = order / 3;/*nice variable name retard*/
 		for (int i = 0; i < t; i++)
 			graph.addEdge(new Edge(permutation.get(i),permutation.get(i+1),0));
 		for (int i = t; i < order; i++)

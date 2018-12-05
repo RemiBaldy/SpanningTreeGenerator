@@ -15,5 +15,11 @@ public class Arc {
 	public int getDest() {
 		return (reversed ? support.getSource() : support.getDest());
 	}
+
+	public String toString (){
+        StringBuilder result = new StringBuilder();
+        result.append(getSource()).append(" => ").append(getDest()).append("\n");
+        return result.toString();
+    }
 	
 }

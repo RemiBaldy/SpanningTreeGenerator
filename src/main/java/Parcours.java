@@ -5,28 +5,27 @@ import java.util.Stack;
 
 
 public class Parcours {
-
 	Graph graph;
 	Stack<Arc> frontier;
 	BitSet reached;
 	ArrayList<Arc> predecessor;
 	
-	private void etendsFrontiere(int sommet) {
+	private void etendsFrontier(int sommet) {
 		for (Arc a : graph.outNeighbours(sommet))
 			frontier.add(a);
 	}
-	
+
 	
 	private void explore(Arc a) {
 		if (reached.get(a.getDest())) return;
 		reached.set(a.getDest());
-		etendsFrontiere(a.getDest());
+		etendsFrontier(a.getDest());
 		predecessor.set(a.getDest(), a);
 	}
 	
 	private void parcours(int source) {
 		reached.set(source);
-		etendsFrontiere(source);
+		etendsFrontier(source);
 		while (!frontier.isEmpty())
 			explore(frontier.pop());
 		
