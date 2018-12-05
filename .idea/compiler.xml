@@ -9,5 +9,8 @@
         <module name="SpanningTreeGenerator" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="SpanningTreeGenerator" target="7" />
+    </bytecodeTargetLevel>
   </component>
 </project>
