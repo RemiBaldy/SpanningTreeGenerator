@@ -17,9 +17,7 @@ public class Arc {
 	}
 
 	public String toString (){
-        StringBuilder result = new StringBuilder();
-        result.append(getSource()).append(" => ").append(getDest()).append("\n");
-        return result.toString();
+		return String.valueOf(getSource()) + " => " + getDest() + "  : " + support.weight+ "\n";
     }
 	
 }

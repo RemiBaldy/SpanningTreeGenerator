@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
+
 
 
 public class Graph implements Iterable<Edge>{
@@ -81,7 +81,6 @@ public class Graph implements Iterable<Edge>{
 
     public ArrayList<Arc> outNeighbours(int sommet) {
         return outAdjacency.get(sommet);
-
     }
 
 
@@ -111,6 +110,8 @@ public class Graph implements Iterable<Edge>{
 
         return result.toString();
     }
+
+
 
 	@Override
 	public Iterator<Edge> iterator() {

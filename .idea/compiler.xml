@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="SpanningTree" />
         <module name="SpanningTreeGenerator" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="SpanningTree" target="7" />
       <module name="SpanningTreeGenerator" target="7" />
     </bytecodeTargetLevel>
   </component>

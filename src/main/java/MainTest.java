@@ -12,6 +12,8 @@ public class MainTest {
         edges.add(new Edge(0,2,6));
         edges.add(new Edge(3,5,6));
         edges.add(new Edge(0,5,6));
+        edges.add(new Edge(3,1,6));
+        edges.add(new Edge(5,1,6));
 
         for(Edge edge : edges){
             graph.addEdge(edge);
@@ -20,9 +22,26 @@ public class MainTest {
 
         System.out.println(graph.arcsAdjacencyToString());
 
-        /*AldousBorder aldousBorder = new AldousBorder(graph);
-        for(Arc arc : aldousBorder.parcours())
+        DepthFirstAldousBorder aldousBorder = new DepthFirstAldousBorder(graph);
+
+        for(Arc arc : aldousBorder.generateSpanningTree())
+            System.out.println(arc.toString());
+
+
+        /* Test BFS*/
+        /*BreadthFirstSearch bfs = new BreadthFirstSearch(graph);
+        for(Arc arc : bfs.generateTree(1))
             System.out.println(arc.toString());*/
+
+
+        /*Minimum random weight*/
+        /*MinimumRandomWeight min = new MinimumRandomWeight(graph);
+        for(Arc arc : min.Prim())
+            System.out.println(arc.toString());*/
+
+        /*Random weight*/
+        /*System.out.println(min.randomizeWeightArcs(graph).arcsAdjacencyToString());*/
+
 
     }
 }
