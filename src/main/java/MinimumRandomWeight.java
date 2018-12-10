@@ -37,17 +37,15 @@ public class MinimumRandomWeight {
 
     public ArrayList<Arc> Prim(){
         Random rand = new Random();
-        reached[3/*rand.nextInt(graph.getOrder())*/] = true;
+        reached[rand.nextInt(graph.getOrder())] = true;
 
         ArrayList<Arc> result = new ArrayList<>();
 
         double minimumWeightArc;
         Arc minimumArc = null;
-        int cpt = 0;
 
         while(!allVertexesReached()){
             minimumWeightArc = graph.getOrder();
-            cpt++;
             for(int i = 0; i < graph.getOrder(); i++){
                 if(reached[i]){
                     if(graph.outNeighbours(i) != null){

@@ -18,20 +18,33 @@ public class MainTest {
         for(Edge edge : edges){
             graph.addEdge(edge);
             graph.addArc(new Arc(edge, false));
+            graph.addArc(new Arc(edge, true));
         }
 
         System.out.println(graph.arcsAdjacencyToString());
 
-        DepthFirstAldousBorder aldousBorder = new DepthFirstAldousBorder(graph);
 
-        for(Arc arc : aldousBorder.generateSpanningTree())
-            System.out.println(arc.toString());
 
 
         /* Test BFS*/
         /*BreadthFirstSearch bfs = new BreadthFirstSearch(graph);
         for(Arc arc : bfs.generateTree(1))
             System.out.println(arc.toString());*/
+
+
+
+        /*Dfs random*/
+        /*DepthFirstRandomizedSearch dfsRdm = new DepthFirstRandomizedSearch(graph);
+        for(Arc arc : aldousBorder.generateSpanningTree())
+            System.out.println(arc.toString());*/
+
+
+
+        /*Aldous Broder*/
+        /*AldousBroder aldousBroder = new AldousBroder(graph);
+        for(Arc arc : aldousBroder.generateSpanningTree())
+            System.out.println(arc.toString());*/
+
 
 
         /*Minimum random weight*/
