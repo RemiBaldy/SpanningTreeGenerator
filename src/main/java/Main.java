@@ -1,10 +1,9 @@
-import java.awt.image.BufferedImage;
-import java.io.IOException;
+import Graph.*;
+
 import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 
 
 class MainStub {
@@ -36,11 +35,11 @@ class MainStub {
 		grid = new Grid(1920/11,1080/11);
 		Graph graph = grid.graph;
 		
-//		Graph graph = new Complete(400).graph;
+//		Graph.Graph graph = new Graph.Complete(400).graph;
 		
-//		Graph graph = new ErdosRenyi(1_000, 100).graph;
+//		Graph.Graph graph = new Graph.ErdosRenyi(1_000, 100).graph;
 
-//		Graph graph = new Lollipop(1_000).graph;
+//		Graph.Graph graph = new Graph.Lollipop(1_000).graph;
 		
 		int nbrOfSamples = 10;
 		int diameterSum = 0;
@@ -49,7 +48,7 @@ class MainStub {
 		int degreesSum[] = {0, 0, 0, 0, 0};
 		int degrees[];
 		
-		ArrayList<Edge> randomTree = null; 
+		ArrayList<Edge> randomTree = null;
 		RootedTree rooted = null;
 
 		long startingTime = System.nanoTime();
@@ -88,8 +87,8 @@ class MainStub {
 	}
 
 	private static void showGrid(
-			Grid grid, 
-			RootedTree rooted, 
+			Grid grid,
+			RootedTree rooted,
 			ArrayList<Edge> randomTree
 			) throws InterruptedException {
 		JFrame window = new JFrame("solution");

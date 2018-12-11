@@ -1,3 +1,6 @@
+package Graph;
+
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -34,7 +37,7 @@ public class BreadthFirstSearch {
         reached[vertex] = true;
     }
 
-   /* public static ArrayList<Arc> generateTree(Graph graph, int i) {
+   /* public static ArrayList<Graph.Graph.Arc> generateTree(Graph.Graph graph, int i) {
 
         return null;
     }*/

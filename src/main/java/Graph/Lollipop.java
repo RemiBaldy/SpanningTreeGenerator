@@ -1,3 +1,7 @@
+package Graph;
+
+import Graph.Graph;
+
 import java.util.ArrayList;
 import java.util.Collections;
 

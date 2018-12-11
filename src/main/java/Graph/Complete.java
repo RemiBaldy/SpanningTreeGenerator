@@ -1,3 +1,6 @@
+package Graph;
+
+import Graph.Graph;
 
 public class Complete {
 

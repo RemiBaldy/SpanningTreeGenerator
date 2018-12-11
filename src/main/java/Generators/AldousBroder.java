@@ -1,3 +1,7 @@
+package Generators;
+
+import Graph.*;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -7,7 +11,7 @@ public class AldousBroder {
     private ArrayList<ArrayList<Arc>> arcsParcourus;
     private boolean[] reached;
     private Random rand;
-    Graph graph;
+    private Graph graph;
 
     public AldousBroder(Graph graph) {
         this.graph = graph;

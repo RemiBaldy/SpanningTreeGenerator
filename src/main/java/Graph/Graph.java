@@ -1,3 +1,5 @@
+package Graph;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -12,9 +14,9 @@ public class Graph implements Iterable<Edge>{
 	private int edgeCardinality;
 
 	
-	ArrayList<ArrayList<Edge>> adjacency;
-	ArrayList<ArrayList<Arc>> inAdjacency;
-	ArrayList<ArrayList<Arc>> outAdjacency;
+	public ArrayList<ArrayList<Edge>> adjacency;
+	public ArrayList<ArrayList<Arc>> inAdjacency;
+	public ArrayList<ArrayList<Arc>> outAdjacency;
 
     public int getOrder() {
         return order;
@@ -118,7 +120,7 @@ public class Graph implements Iterable<Edge>{
 		return new GraphIterator();
 	}
 
-    private class GraphIterator/*<Edge>*/ implements Iterator<Edge> {
+    private class GraphIterator/*<Graph.Edge>*/ implements Iterator<Edge> {
 	    int currentVertex = 0;
 	    int currentEdge = 0;
 

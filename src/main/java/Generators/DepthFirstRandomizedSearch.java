@@ -1,3 +1,7 @@
+package Generators;
+
+import Graph.*;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -23,13 +27,7 @@ public class DepthFirstRandomizedSearch {
         return true;
     }
 
-    public boolean outNeighboursUnreached(int sommet){
-        if(graph.outNeighbours(sommet) == null) return false;
-        for(Arc arc : graph.outNeighbours(sommet))
-            if(!reached[arc.getDest()])
-                return true;
-        return false;
-    }
+
 
     public ArrayList<Arc> generateSpanningTree(){
         initialiseList();
@@ -52,10 +50,19 @@ public class DepthFirstRandomizedSearch {
         while(outNeighboursUnreached(vertex) && !allVertexesReached()){
             ArrayList<Arc> neighbours = graph.outNeighbours(vertex);
             int randomNeighbour = rand.nextInt(neighbours.size());
-            int vertexReached = neighbours.get(randomNeighbour).getDest();
-            reached[vertexReached] = true;
-            arcsParcourus.get(neighbours.get(randomNeighbour).getDest()).add(neighbours.get(randomNeighbour));
-            parcours(vertexReached);
+            if(!reached[neighbours.get(randomNeighbour).getDest()]) {
+                int vertexReached = neighbours.get(randomNeighbour).getDest();
+                reached[vertexReached] = true;
+                arcsParcourus.get(neighbours.get(randomNeighbour).getDest()).add(neighbours.get(randomNeighbour));
+                parcours(vertexReached);
+            }
         }
+    }
+    public boolean outNeighboursUnreached(int sommet){
+        if(graph.outNeighbours(sommet) == null) return false;
+        for(Arc arc : graph.outNeighbours(sommet))
+            if(!reached[arc.getDest()])
+                return true;
+        return false;
     }
 }
