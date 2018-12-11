@@ -35,17 +35,15 @@ public class AldousBroder {
 
     public ArrayList<Arc> generateSpanningTree(){
         initialiseList();
-        System.out.println("depart : " + sommetActuel);
-        //int sommetPred;
+        //System.out.println("depart : " + sommetActuel);
 
         while(!allVertexesReached()){
             ArrayList<Arc> neighbours = graph.outNeighbours(sommetActuel);
+
             int randomNeighbour = rand.nextInt(neighbours.size());
-            //sommetPred = sommetActuel;
             sommetActuel = neighbours.get(randomNeighbour).getDest();
             if(!reached[sommetActuel]) {
-                //System.out.println("sommet pred  " + sommetPred);
-                System.out.println("premiere fois atteint: " + neighbours.get(randomNeighbour).toString());
+                //System.out.println("premiere fois atteint: " + neighbours.get(randomNeighbour).toString());
                 arcsParcourus.get(neighbours.get(randomNeighbour).getSource()).add(neighbours.get(randomNeighbour));
             }
             reached[sommetActuel] = true;

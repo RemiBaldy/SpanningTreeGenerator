@@ -10,18 +10,19 @@ public class MainTest {
         ArrayList<Edge> edges = new ArrayList<>();
         edges.add(new Edge(1,2,5));
         edges.add(new Edge(2,3,6));
-        edges.add(new Edge(1,0,6));
         edges.add(new Edge(1,4,6));
         edges.add(new Edge(0,2,6));
         edges.add(new Edge(3,5,6));
         edges.add(new Edge(0,5,6));
-        edges.add(new Edge(3,1,6));
         edges.add(new Edge(5,1,6));
+
+        edges.add(new Edge(1,0,6));
+        edges.add(new Edge(3,1,6));
 
         for(Edge edge : edges){
             graph.addEdge(edge);
-            graph.addArc(new Arc(edge, false));
-            graph.addArc(new Arc(edge, true));
+            /*graph.addArc(new Arc(edge, false));
+            graph.addArc(new Arc(edge, true));*/
         }
 
         System.out.println(graph.arcsAdjacencyToString());
@@ -30,15 +31,20 @@ public class MainTest {
 
 
         /* Test BFS*/
-        /*Graph.BreadthFirstSearch bfs = new Graph.BreadthFirstSearch(graph);
-        for(Graph.Graph.Arc arc : bfs.generateTree(1))
+        /*BreadthFirstSearch bfs = new BreadthFirstSearch(graph);
+        for(Arc arc : bfs.generateTree(1))
+            System.out.println(arc.toString());*/
+
+        /*Bfs random*/
+        /*BreadthFirstRandomize bfs = new BreadthFirstRandomize(graph);
+        for(Arc arc : bfs.generateTree(1))
             System.out.println(arc.toString());*/
 
 
 
 
         /*Dfs random*/
-        /*Generators.DepthFirstRandomizedSearch dfsRdm = new Generators.DepthFirstRandomizedSearch(graph);
+        /*DepthFirstRandomizedSearch dfsRdm = new Generators.DepthFirstRandomizedSearch(graph);
         for(Arc arc : dfsRdm.generateSpanningTree())
             System.out.println(arc.toString());*/
 
@@ -46,7 +52,7 @@ public class MainTest {
 
 
         /*Aldous Broder*/
-        /*Generators.AldousBroder aldousBroder = new Generators.AldousBroder(graph);
+        /*AldousBroder aldousBroder = new Generators.AldousBroder(graph);
         for(Arc arc : aldousBroder.generateSpanningTree())
             System.out.println(arc.toString());*/
 
@@ -64,6 +70,7 @@ public class MainTest {
 
 
 
+
         /*Random Graph.Graph.Arc Insertions*/
         /*RandomArcInsertions rdmArcIns = new RandomArcInsertions(graph);
         for(Arc arc : rdmArcIns.generateTree())
@@ -72,9 +79,11 @@ public class MainTest {
 
 
 
+
         /*Wilson*/
-        Wilson wilson = new Wilson(graph);
-        System.out.println(wilson.maximumDegreeVertex());
+        /*Wilson wilson = new Wilson(graph);
+        for(Arc arc : wilson.generateSpanningTree())
+            System.out.println(arc.toString());*/
 
     }
 }

@@ -56,6 +56,7 @@ public class Graph implements Iterable<Edge>{
 	
 	public void addArc(Arc arc) {
         inAdjacency.get(arc.getDest()).add(arc);
+        //inAdjacency.get(arc.getSource()).add(arc);
         outAdjacency.get(arc.getSource()).add(arc);
 	}
 	
@@ -68,9 +69,13 @@ public class Graph implements Iterable<Edge>{
             adjacency.get(e.source).add(e);
 
 
+
         ensureVertex(inversedEdge.source);
-        if(!isEdge(inversedEdge))
+        if(!isEdge(inversedEdge)) {
             adjacency.get(inversedEdge.source).add(inversedEdge);
+            addArc(new Arc(e, true));
+            addArc(new Arc(e, false));
+        }
 
 	}
 

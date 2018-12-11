@@ -49,7 +49,7 @@ public class RandomArcInsertions {
                 spanningTreeOut.get(rdmArc.getSource()).remove(rdmArc);
             else {
                 spanningTreeSize++;
-                System.out.println("new arc : " + rdmArc.toString());
+                //System.out.println("new arc : " + rdmArc.toString());
             }
         }
         ArrayList<Arc> result = new ArrayList<>();

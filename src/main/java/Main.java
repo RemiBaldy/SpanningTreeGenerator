@@ -1,3 +1,4 @@
+import Generators.*;
 import Graph.*;
 
 import java.util.ArrayList;
@@ -17,9 +18,44 @@ class MainStub {
 		// TOOO : modifier l'algorithme utiliser ici.
 		
 		// Non-random BFS
-		BreadthFirstSearch bfs = new BreadthFirstSearch(graph);
+		/*BreadthFirstSearch bfs = new BreadthFirstSearch(graph);
 		ArrayList<Arc> randomArcTree =
-				bfs.generateTree(0);
+				bfs.generateTree(0);*/
+
+
+        /*Aldous broder*/
+		/*AldousBroder aldousBroder = new Generators.AldousBroder(graph);
+        ArrayList<Arc> randomArcTree = aldousBroder.generateSpanningTree();*/
+
+
+		/*Bfs random*/
+        /*BreadthFirstRandomize bfs = new BreadthFirstRandomize(graph);
+        ArrayList<Arc> randomArcTree = bfs.generateTree(0);*/
+
+
+        /*Minimum random weight*/
+        /*MinimumRandomWeight min = new MinimumRandomWeight(graph);
+        ArrayList<Arc> randomArcTree = min.Prim();*/
+
+        /*Wilson*/
+        /*Wilson wilson = new Wilson(graph);
+        ArrayList<Arc> randomArcTree = wilson.generateSpanningTree();*/
+
+
+
+
+        /*Random Arc Insertions*/
+        RandomArcInsertions rdmArcIns = new RandomArcInsertions(graph);
+        ArrayList<Arc> randomArcTree = rdmArcIns.generateTree();
+
+
+        /*Dfs random*/
+        /*DepthFirstRandomizedSearch dfsRdm = new DepthFirstRandomizedSearch(graph);
+        ArrayList<Arc> randomArcTree = dfsRdm.generateSpanningTree();*/
+
+
+
+
 		randomTree = new ArrayList<>();
 		for (Arc a : randomArcTree) randomTree.add(a.support);
 	
@@ -31,8 +67,7 @@ class MainStub {
 	
 	public static void main(String argv[]) throws InterruptedException {
 
-		Grid grid = null;
-		grid = new Grid(1920/11,1080/11);
+		Grid grid = new Grid(1920/11,1080/11);
 		Graph graph = grid.graph;
 		
 //		Graph.Graph graph = new Graph.Complete(400).graph;

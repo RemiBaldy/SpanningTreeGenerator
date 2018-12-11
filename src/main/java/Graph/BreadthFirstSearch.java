@@ -22,10 +22,12 @@ public class BreadthFirstSearch {
 
         while(!vertexWaitingRoom.isEmpty()){
             ArrayList<Arc> neighbours = graph.outNeighbours(vertexWaitingRoom.removeLast());
-            for(Arc arc : neighbours) {
-                if (!reached[arc.getDest()]) {
-                    addReached(arc.getDest());
-                    bfsResult.add(arc);
+            if(neighbours != null && !neighbours.isEmpty()) {
+                for (Arc arc : neighbours) {
+                    if (!reached[arc.getDest()]) {
+                        addReached(arc.getDest());
+                        bfsResult.add(arc);
+                    }
                 }
             }
         }
@@ -35,6 +37,11 @@ public class BreadthFirstSearch {
     public void addReached(int vertex){
         vertexWaitingRoom.push(vertex);
         reached[vertex] = true;
+        /*System.out.println(reached.length);
+        System.out.println(reached.length);
+        System.out.println(vertex);
+        System.out.println(reached[vertex]);
+        System.out.println(reached[vertex]);*/
     }
 
    /* public static ArrayList<Graph.Graph.Arc> generateTree(Graph.Graph graph, int i) {
