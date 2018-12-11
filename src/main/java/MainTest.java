@@ -72,10 +72,9 @@ public class MainTest {
 
 
         /*Random Arc Insertions*/
-        /*RandomArcInsertions rdmArcIns = new RandomArcInsertions(graph);
+        RandomArcInsertions rdmArcIns = new RandomArcInsertions(graph);
         for(Arc arc : rdmArcIns.generateTree())
-            System.out.println(arc.toString());*/
-
+            System.out.println(arc.toString());
 
 
 

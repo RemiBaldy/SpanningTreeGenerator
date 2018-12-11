@@ -79,6 +79,7 @@ public class RandomArcInsertions {
             if(arc.getDest() == newArc.getDest())
                 return true;
         return false;
+        //return (!visited[newArc.getSource()] | !visited[newArc.getDest()]);
     }
 
     private void addArc(Arc arc){

@@ -45,8 +45,8 @@ class MainStub {
 
 
         /*Random Arc Insertions*/
-        RandomArcInsertions rdmArcIns = new RandomArcInsertions(graph);
-        ArrayList<Arc> randomArcTree = rdmArcIns.generateTree();
+        /*RandomArcInsertions rdmArcIns = new RandomArcInsertions(graph);
+        ArrayList<Arc> randomArcTree = rdmArcIns.generateTree();*/
 
 
         /*Dfs random*/
