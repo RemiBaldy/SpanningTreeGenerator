@@ -11,7 +11,7 @@ import java.util.Random;
 public class RandomArcInsertions {
     private ArrayList<ArrayList<Arc>> spanningTreeOut;
     private boolean visited[];
-    private boolean vertexRecursionTreated[];
+    private boolean isVertexRecursionTreated[];
 
     private int spanningTreeSize;
     Graph graph;
@@ -46,7 +46,7 @@ public class RandomArcInsertions {
             rdmArc = getRandomArc();
             spanningTreeOut.get(rdmArc.getSource()).add(rdmArc);
             if (isCycle())
-                spanningTreeOut.get(rdmArc.getSource()).remove(rdmArc);
+                remove(rdmArc);
             else {
                 spanningTreeSize++;
                 //System.out.println("new arc : " + rdmArc.toString());
@@ -54,7 +54,7 @@ public class RandomArcInsertions {
         }
         ArrayList<Arc> result = new ArrayList<>();
         for(ArrayList<Arc> arcs: spanningTreeOut) {
-            if(!arcs.isEmpty())
+            if(arcs != null && !arcs.isEmpty())
                 result.addAll(arcs);
         }
         return result;
@@ -87,7 +87,7 @@ public class RandomArcInsertions {
 
     private boolean isCycle(){
         visited = new boolean[graph.getOrder()];
-        vertexRecursionTreated = new boolean[graph.getOrder()];
+        isVertexRecursionTreated = new boolean[graph.getOrder()];
 
         for(ArrayList<Arc> arcs : spanningTreeOut)
             if(!arcs.isEmpty())
@@ -97,7 +97,7 @@ public class RandomArcInsertions {
     }
 
     private boolean isCycleRecursive(int vertex){
-        if (vertexRecursionTreated[vertex])
+        if (isVertexRecursionTreated[vertex])
             return true;
 
         if (visited[vertex])
@@ -105,14 +105,18 @@ public class RandomArcInsertions {
 
         visited[vertex] = true;
 
-        vertexRecursionTreated[vertex] = true;
+        isVertexRecursionTreated[vertex] = true;
 
         for (Arc arc : spanningTreeOut.get(vertex))
             if (isCycleRecursive(arc.getDest()))
                 return true;
 
-        vertexRecursionTreated[vertex] = false;
+        isVertexRecursionTreated[vertex] = false;
 
         return false;
+    }
+
+    private void remove(Arc rdmArc){
+        spanningTreeOut.get(rdmArc.getSource()).remove(rdmArc/*spanningTreeOut.get(rdmArc.getSource()).size()-1*/);
     }
 }

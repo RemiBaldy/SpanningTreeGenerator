@@ -25,7 +25,7 @@ public class MainTest {
             graph.addArc(new Arc(edge, true));*/
         }
 
-        System.out.println(graph.arcsAdjacencyToString());
+        //System.out.println(graph.arcsAdjacencyToString());
 
 
 
@@ -71,7 +71,7 @@ public class MainTest {
 
 
 
-        /*Random Graph.Graph.Arc Insertions*/
+        /*Random Arc Insertions*/
         /*RandomArcInsertions rdmArcIns = new RandomArcInsertions(graph);
         for(Arc arc : rdmArcIns.generateTree())
             System.out.println(arc.toString());*/
