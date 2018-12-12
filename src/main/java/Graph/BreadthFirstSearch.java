@@ -37,11 +37,6 @@ public class BreadthFirstSearch {
     public void addReached(int vertex){
         vertexWaitingRoom.push(vertex);
         reached[vertex] = true;
-        /*System.out.println(reached.length);
-        System.out.println(reached.length);
-        System.out.println(vertex);
-        System.out.println(reached[vertex]);
-        System.out.println(reached[vertex]);*/
     }
 
    /* public static ArrayList<Graph.Graph.Arc> generateTree(Graph.Graph graph, int i) {

@@ -15,34 +15,32 @@ public class RandomArcInsertions {
 
     private int spanningTreeSize;
     Graph graph;
+    int order;
 
     public RandomArcInsertions(Graph graph) {
         this.spanningTreeOut = new ArrayList<>();
         this.graph = graph;
         this.spanningTreeSize = 0;
+        this.order = graph.getOrder();
         initialiseList();
 
     }
 
-    private void initialiseList(){
+    private void initialiseList() {
         spanningTreeOut = new ArrayList<>();
         for (int i = 0; i < graph.getOrder(); i++) {
             spanningTreeOut.add(new ArrayList<Arc>());
         }
     }
-    /*private void resetWeight(){
-        for(ArrayList<Graph.Arc> arcs: spanningTreeOut)
-            if(arcs != null)
-                for(Graph.Graph.Arc arc : arcs)
-                    arc.support.weight = 0;
-    }*/
 
     public ArrayList<Arc> generateTree(){
-        Arc rdmArc = getRandomArc();
+        Arc rdmArc;/* = getRandomArc();
         addArc(rdmArc);
-        spanningTreeSize++;
+        spanningTreeSize++;*/
 
         while (spanningTreeSize < graph.getOrder() - 1) {
+            if(order % 100 == 0)
+                System.out.println("order : "+order+ "  garphorder "+graph.getOrder() );
             rdmArc = getRandomArc();
             spanningTreeOut.get(rdmArc.getSource()).add(rdmArc);
             if (isCycle())
@@ -52,24 +50,27 @@ public class RandomArcInsertions {
                 //System.out.println("new arc : " + rdmArc.toString());
             }
         }
-        ArrayList<Arc> result = new ArrayList<>();
-        for(ArrayList<Arc> arcs: spanningTreeOut) {
-            if(arcs != null && !arcs.isEmpty())
-                result.addAll(arcs);
-        }
-        return result;
+        return result();
     }
 
 
     private Arc getRandomArc(){
-
         Random rand = new Random();
-        int source = rand.nextInt(graph.getOrder());
+        int source = rand.nextInt(order/*graph.getOrder()*/);
+        if(source >= order)
+            System.out.println(source);
         int dest = rand.nextInt(graph.outAdjacency.get(source).size());
-        /*rajouter !reached[source] | !reached[dest]*/
-        if(source == dest | isAlreadyArc(graph.outAdjacency.get(source).get(dest)))
+        if(/*isAlreadyArc(graph.outAdjacency.get(source).get(dest)) | */(isReached(graph.outAdjacency.get(source).get(dest).getSource()) && isReached(graph.outAdjacency.get(source).get(dest).getDest())))
             return getRandomArc();
-        return graph.outAdjacency.get(source).get(dest);
+        else {
+            Arc arc = graph.outAdjacency.get(source).get(dest);
+            graph.outAdjacency.get(source).remove(arc);
+            if (graph.outAdjacency.get(source).isEmpty() | graph.outAdjacency.get(source) == null) {
+                graph.outAdjacency.remove(graph.outAdjacency.get(source));
+                order--;
+            }
+            return arc;
+        }
     }
 
     private boolean isAlreadyArc(Arc newArc){
@@ -119,5 +120,17 @@ public class RandomArcInsertions {
 
     private void remove(Arc rdmArc){
         spanningTreeOut.get(rdmArc.getSource()).remove(rdmArc/*spanningTreeOut.get(rdmArc.getSource()).size()-1*/);
+    }
+    private ArrayList<Arc> result(){
+         ArrayList<Arc> result = new ArrayList<>();
+         for(ArrayList<Arc> arcs: spanningTreeOut) {
+             if(arcs != null && !arcs.isEmpty())
+                 result.addAll(arcs);
+         }
+         return result;
+    }
+
+    private boolean isReached(int vertex){
+        return !spanningTreeOut.get(vertex).isEmpty();
     }
 }

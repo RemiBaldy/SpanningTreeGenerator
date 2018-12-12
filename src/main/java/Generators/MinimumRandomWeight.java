@@ -26,7 +26,7 @@ public class MinimumRandomWeight {
                 for(Arc arc : vertexAjacencies){
                     Edge rdmEdge = new Edge(arc.getSource(), arc.getDest(), rand.nextDouble());
                     randomizedGraph.addEdge(rdmEdge);
-                    randomizedGraph.addArc(new Arc(rdmEdge,false));
+                    //randomizedGraph.addArc(new Arc(rdmEdge,false));
                 }
             }
         }

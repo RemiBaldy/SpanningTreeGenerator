@@ -27,9 +27,6 @@ public class MainTest {
 
         //System.out.println(graph.arcsAdjacencyToString());
 
-
-
-
         /* Test BFS*/
         /*BreadthFirstSearch bfs = new BreadthFirstSearch(graph);
         for(Arc arc : bfs.generateTree(1))
@@ -72,9 +69,9 @@ public class MainTest {
 
 
         /*Random Arc Insertions*/
-        RandomArcInsertions rdmArcIns = new RandomArcInsertions(graph);
+        /*RandomArcInsertions rdmArcIns = new RandomArcInsertions(graph);
         for(Arc arc : rdmArcIns.generateTree())
-            System.out.println(arc.toString());
+            System.out.println(arc.toString());*/
 
 
 

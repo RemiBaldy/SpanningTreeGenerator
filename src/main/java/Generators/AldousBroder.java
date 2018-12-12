@@ -35,7 +35,6 @@ public class AldousBroder {
 
     public ArrayList<Arc> generateSpanningTree(){
         initialiseList();
-        //System.out.println("depart : " + sommetActuel);
 
         while(!allVertexesReached()){
             ArrayList<Arc> neighbours = graph.outNeighbours(sommetActuel);
@@ -43,7 +42,6 @@ public class AldousBroder {
             int randomNeighbour = rand.nextInt(neighbours.size());
             sommetActuel = neighbours.get(randomNeighbour).getDest();
             if(!reached[sommetActuel]) {
-                //System.out.println("premiere fois atteint: " + neighbours.get(randomNeighbour).toString());
                 arcsParcourus.get(neighbours.get(randomNeighbour).getSource()).add(neighbours.get(randomNeighbour));
             }
             reached[sommetActuel] = true;

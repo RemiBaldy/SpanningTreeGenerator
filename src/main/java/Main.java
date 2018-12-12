@@ -20,7 +20,7 @@ class MainStub {
 		// Non-random BFS
 		/*BreadthFirstSearch bfs = new BreadthFirstSearch(graph);
 		ArrayList<Arc> randomArcTree =
-				bfs.generateTree(0);*/
+				bfs.generateTree(0);
 
 
         /*Aldous broder*/
@@ -29,8 +29,8 @@ class MainStub {
 
 
 		/*Bfs random*/
-        /*BreadthFirstRandomize bfs = new BreadthFirstRandomize(graph);
-        ArrayList<Arc> randomArcTree = bfs.generateTree(0);*/
+        BreadthFirstRandomize bfs = new BreadthFirstRandomize(graph);
+        ArrayList<Arc> randomArcTree = bfs.generateTree(0);
 
 
         /*Minimum random weight*/
@@ -38,16 +38,14 @@ class MainStub {
         ArrayList<Arc> randomArcTree = min.Prim();*/
 
         /*Wilson*/
-        /*Wilson wilson = new Wilson(graph);
+       /* Wilson wilson = new Wilson(graph);
         ArrayList<Arc> randomArcTree = wilson.generateSpanningTree();*/
-
 
 
 
         /*Random Arc Insertions*/
         /*RandomArcInsertions rdmArcIns = new RandomArcInsertions(graph);
         ArrayList<Arc> randomArcTree = rdmArcIns.generateTree();*/
-
 
         /*Dfs random*/
         /*DepthFirstRandomizedSearch dfsRdm = new DepthFirstRandomizedSearch(graph);

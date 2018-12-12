@@ -19,14 +19,8 @@ public class Wilson {
     public Wilson(Graph graph) {
         this.graph = graph;
         this.reached = new boolean[graph.getOrder()];
-        //initialiseList();;
     }
 
-    /*private void initialiseList(){
-        arcsParcourus = new ArrayList<>();
-        for (int i = 0; i < graph.getOrder(); i++)
-            arcsParcourus.add(new ArrayList<Arc>());
-    }*/
 
     public boolean allVertexesReached(){
         for(Boolean bool : reached)
@@ -67,14 +61,16 @@ public class Wilson {
     }
 
     public ArrayList<Arc> parcours(int vertex){
+
         ArrayList<Arc> chemin = new ArrayList<>();
         initialiseList(chemin, graph.getOrder());
+
         ArrayList<Arc> neighbours = graph.outNeighbours(vertex);
         int randomNeighbour = random.nextInt(neighbours.size());
         chemin.set(neighbours.get(randomNeighbour).getSource(),neighbours.get(randomNeighbour));
-        int currentVertex;
 
-        while(!reached[neighbours.get(randomNeighbour).getDest()]){//chemin.get()
+        int currentVertex;
+        while(!reached[neighbours.get(randomNeighbour).getDest()]){
             currentVertex = neighbours.get(randomNeighbour).getDest();
             neighbours = graph.outNeighbours(currentVertex);
             randomNeighbour = random.nextInt(neighbours.size());
